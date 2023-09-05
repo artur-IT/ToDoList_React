@@ -9,14 +9,27 @@ body {
   font-size: 22px;
   text-align: left;
   color: #0b3f60;
-  background-color: #0b3f60;
+  background-color: #000;
+}
+
+.bg_color {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: 1;
+  z-index: 0;
+  background-image: url(/src/1.jpg);
+  background-size: cover;
+  filter: blur(5px) brightness(40%);
 }
 
 .main {
   position: relative;
   width: 750px;
-  height: 400px;
-  margin: 10vh auto;
+  height: 80vh;
+  margin: 0 auto;
+  padding: 10vh 0;
   display: grid;
   grid-template-columns: 400px 400px;
   grid-template-rows: 250px auto;
@@ -24,38 +37,50 @@ body {
     "one two"
     "three four";
   gap: 15px;
+  overflow-x: hidden;
+  z-index: 1;
 }
 .one {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
   grid-area: one;
   display: grid;
+  animation: comesFromTop 1.5s 0.5s both;
 }
 .one > p {
-  position: absolute;
-  top: 26%;
-  left: 6%;
+  position: relative;
+  bottom: 140%;
+  right: 8%;
   color: #eb8402;
   font-size: 2.5rem;
   transform: rotate(0.75turn);
 }
 .one_content {
+  position: relative;
+  left: 50%;
+  bottom: 120%;
   display: grid;
-  justify-content: end;
   align-content: end;
-  margin-left: 50%;
   padding-bottom: 3px;
   width: 50%;
-  height: 100%;
+  height: 220%;
   background-color: #cde;
 }
 .one_content p {
-  text-align: right;
+  text-align: left;
   padding: 5px 10px;
 }
 .two {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   color: #eb8402;
   display: grid;
   grid-area: two;
   align-content: end;
+  animation: comesFromRight 1.5s 1.5s both;
 }
 .two_form {
   display: grid;
@@ -76,12 +101,14 @@ body {
 
 .three {
   position: absolute;
+  left: -55vw;
   display: grid;
   grid-area: three;
   width: 100%;
   min-height: 100px;
   height: auto;
   background-color: #89a;
+  animation: comesFromLeft 1.5s 2.5s both;
 }
 .four {
   display: grid;
@@ -112,6 +139,8 @@ form > input {
   font-size: 1.1rem;
   background-color: #fff;
   border: none;
+  opacity: 1;
+  animation: showAddButton 1.5s 4.5s both;
 }
 button.done {
   background-color: #fff;
@@ -138,4 +167,177 @@ p span {
   text-align: left;
   padding: 5px 15px;
   margin-bottom: 15px;
+}
+
+@keyframes comesFromTop {
+  from {
+    right: 0;
+    bottom: 150%;
+  }
+  to {
+    right: 0;
+    bottom: 0;
+  }
+}
+@keyframes comesFromRight {
+  from {
+    left: 55vw;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes comesFromLeft {
+  from {
+    left: -55vw;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes showAddButton {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* MOBILE VIEW  */
+@media (max-width: 500px) and (orientation: portrait) {
+  .main {
+    position: relative;
+    width: 100vw;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 35% 18% min-content auto;
+    grid-template-areas:
+      "one"
+      "two"
+      "three"
+      "four";
+    gap: 15px;
+    /* overflow-x: hidden; */
+  }
+  .one {
+    position: absolute;
+    width: 55%;
+    margin-right: 5%;
+    margin-bottom: 15px;
+    grid-area: one;
+    display: grid;
+    /* justify-content: center; */
+    animation: comesFromTop 1.5s 0.5s both;
+  }
+  .one > p {
+    position: relative;
+    bottom: -22%;
+    right: 39%;
+    color: #eb8402;
+    font-size: 2.3rem;
+    transform: rotate(0.75turn);
+  }
+  .one_content {
+    position: relative;
+    left: 25%;
+    bottom: 120%;
+    display: grid;
+    align-content: end;
+    justify-content: start;
+    padding-bottom: 3px;
+    width: 75%;
+    height: 220%;
+    background-color: #cde;
+  }
+  .two {
+    position: absolute;
+    width: 90%;
+    margin: 0 5%;
+    color: #eb8402;
+    display: grid;
+    grid-area: two;
+    animation: comesFromRight 1.5s 1.5s both;
+  }
+  .two_form {
+    display: grid;
+    width: 100%;
+    height: 90%;
+    text-align: left;
+    font-size: 20px;
+    background-color: #89a;
+  }
+  .three {
+    position: relative;
+    left: -100vw;
+    margin: 0 5%;
+    padding-bottom: 10px;
+    display: grid;
+    grid-area: three;
+    width: 90%;
+    /* min-height: 10%; */
+    /* height: auto; */
+    animation: comesFromLeft 1.5s 2.5s both;
+  }
+  .task_list {
+    text-align: left;
+    margin-bottom: 0;
+    padding: 5px 15px;
+  }
+  .four {
+    position: absolute;
+    display: grid;
+    grid-area: four;
+    width: 100%;
+    justify-content: center;
+  }
+  @keyframes comesFromLeft {
+    from {
+      left: -100vw;
+    }
+    to {
+      left: 0;
+    }
+  }
+}
+@keyframes comesFromRight {
+  from {
+    left: 100vw;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+  .main {
+    height: 90vh;
+    margin: 0 auto;
+    grid-template-rows: 200px auto;
+  }
+  .one {
+    bottom: 0;
+    right: 0;
+  }
+  .one > p {
+    bottom: 40%;
+    right: 0%;
+    font-size: 2.1rem;
+    text-align: right;
+    transform: rotate(0);
+  }
+  .one_content {
+    left: 50%;
+    bottom: 5%;
+    padding-bottom: 3px;
+    width: 50%;
+    height: 105%;
+  }
+  .one_content p {
+    text-align: right;
+    padding: 5px 10px;
+  }
 }
