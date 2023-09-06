@@ -63,6 +63,7 @@ body {
   bottom: 120%;
   display: grid;
   align-content: end;
+  justify-content: end;
   padding-bottom: 3px;
   width: 50%;
   height: 220%;
@@ -172,7 +173,7 @@ p span {
 @keyframes comesFromTop {
   from {
     right: 0;
-    bottom: 150%;
+    bottom: 155%;
   }
   to {
     right: 0;
