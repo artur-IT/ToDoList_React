@@ -14,7 +14,7 @@ const TaskList = ({ remove, done, TaskList }) => {
       done={done}
     />
   ));
-  return <>{showTasks}</>;
+  return showTasks;
 };
 
 export default TaskList;

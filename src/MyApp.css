@@ -27,7 +27,7 @@ body {
 .main {
   position: relative;
   width: 750px;
-  height: 80vh;
+  height: 90vh;
   margin: 0 auto;
   padding: 10vh 0;
   display: grid;
@@ -236,7 +236,7 @@ p span {
   }
   .one > p {
     position: relative;
-    bottom: -22%;
+    bottom: 0;
     right: 39%;
     color: #eb8402;
     font-size: 2.3rem;
@@ -317,7 +317,7 @@ p span {
   .main {
     height: 90vh;
     margin: 0 auto;
-    grid-template-rows: 200px auto;
+    grid-template-rows: auto auto;
   }
   .one {
     bottom: 0;
