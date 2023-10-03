@@ -19,7 +19,7 @@ const FormTask = (props) => {
     const inputAttention = document.querySelector("form > input");
     newTask.id = idUnique;
     newTask.name = inputAttention.value;
-    // newTask.active = true;
+    newTask.active = true;
     inputAttention.classList.remove("attention");
   };
 
