@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import TaskForm from "./TaskForm";
 
@@ -24,22 +23,12 @@ class MyApp extends Component {
     ],
   };
 
-  taskStateList = () => {
-    return true;
-  };
+  taskStateList = () => true;
 
   render() {
-    return (
-      <>
-        <StrictMode>
-          <TaskForm taskList={this.state.tasks} />
-        </StrictMode>
-      </>
-    );
+    return <TaskForm taskList={this.state.tasks} />;
   }
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<MyApp />);
-
+ReactDOM.createRoot(document.getElementById("root")).render(<MyApp />);
 export default MyApp;

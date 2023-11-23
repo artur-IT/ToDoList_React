@@ -1,10 +1,9 @@
 import "./MyApp.css";
 import React, { Component } from "react";
 import TaskList from "./TaskList";
-// propsy z index.js automatycznie przechodzą!
 
 class FormTask extends Component {
-  copyStateList = this.props.taskList; // org. lista zadań ze state z index.js
+  copyStateList = this.props.taskList; // org. task list from index.js
 
   id = 2;
   name = "";
@@ -23,20 +22,13 @@ class FormTask extends Component {
     },
   };
 
-  // obsługa 3 input'ów
+  // 3 input's handler
   handleInput = (e) => {
     const type = e.target.type;
-    if (type === "text") {
-      this.name = e.target.value;
-    }
-    if (type === "date") {
-      // poprawić czyszczenie daty!!!!!!!
-      this.deadlineDate = e.target.valueAsDate.toISOString().slice(0, 10);
-    }
-    if (type === "checkbox") {
-      this.important = e.target.checked;
-    }
-    // aktualizuje obecny state o nowe dane z form!
+    if (type === "text") this.name = e.target.value;
+    if (type === "date") this.deadlineDate = e.target.valueAsDate.toISOString().slice(0, 10);
+    if (type === "checkbox") this.important = e.target.checked;
+    // update state (+ new task from form)
     this.setState({
       newTask: {
         id: this.id,
@@ -47,7 +39,7 @@ class FormTask extends Component {
     });
   };
 
-  // dodaje nowe zad.
+  // add new task
   add = (e) => {
     e.preventDefault();
     const inputAttention = document.querySelector("form > input");
@@ -57,7 +49,7 @@ class FormTask extends Component {
       this.name = "";
       this.deadlineDate = "";
       this.important = false;
-      // zeruje state!
+      // zero's state!
       this.setState({
         copyList: this.copyStateList,
         newTask: {
@@ -75,22 +67,22 @@ class FormTask extends Component {
     }
   };
 
-  // skreślenie zadania
+  // crossing out the task
   done = (e) => {
     const id = parseInt(e.target.id);
     this.copyStateList.forEach((task) => {
-      if (task.id === id) return (task.active = !task.active);
+      if (task.id === id) task.active = !task.active;
     });
     this.setState({
       copyList: this.copyStateList,
     });
   };
 
-  // usuwa zadanie
+  // delete task
   remove = (e) => {
     const id = parseInt(e.target.id);
     this.copyStateList.forEach((task) => {
-      if (task.id === id) return this.copyStateList.splice(this.copyStateList.indexOf(task), 1);
+      if (task.id === id) this.copyStateList.splice(this.copyStateList.indexOf(task), 1);
     });
     this.setState({
       copyList: this.copyStateList,
@@ -155,7 +147,5 @@ class FormTask extends Component {
 
 export default FormTask;
 
-/* wszystko działa!
-PROBLEMY
- - NIE działa: 'wyczyść' datę,
- - po dodaniu nowego zad. trzeba JE! 2x kliknąć 'zrobione' żeby skreśliło */
+/* PROBLEM - after add new task I must 2x click to cross task
+ - I must fix clear data!   */

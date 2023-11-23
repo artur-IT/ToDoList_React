@@ -222,7 +222,6 @@ p span {
       "three"
       "four";
     gap: 15px;
-    /* overflow-x: hidden; */
   }
   .one {
     position: absolute;
@@ -231,7 +230,6 @@ p span {
     margin-bottom: 15px;
     grid-area: one;
     display: grid;
-    /* justify-content: center; */
     animation: comesFromTop 1.5s 0.5s both;
   }
   .one > p {
@@ -279,8 +277,6 @@ p span {
     display: grid;
     grid-area: three;
     width: 90%;
-    /* min-height: 10%; */
-    /* height: auto; */
     animation: comesFromLeft 1.5s 2.5s both;
   }
   .task_list {
